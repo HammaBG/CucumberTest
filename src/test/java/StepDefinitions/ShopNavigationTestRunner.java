@@ -6,7 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-    features = "src/test/resources/features/shopNavigation.feature",
+    features = {
+        "src/test/resources/features/shopNavigation.feature",
+    },
     glue = "StepDefinitions"
 )
 public class ShopNavigationTestRunner {

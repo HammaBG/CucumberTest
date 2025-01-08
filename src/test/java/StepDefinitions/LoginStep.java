@@ -37,19 +37,19 @@ public class LoginStep extends TestBase {
         loginPage.submitLogin();
     }
 
-    // @Then("the user should see a successful login message")
-    // public void the_user_should_see_a_successful_login_message() {
-    //   String msg= loginPage.SuccessMessage();
-    //    assertTrue( msg.contains("You logged into a secure area!")); 
-    // }
+    @Then("the user should see a successful login message")
+    public void the_user_should_see_a_successful_login_message() {
+      String msg= loginPage.SuccessMessage();
+       assertTrue( msg.contains("You logged into a secure area!")); 
+    }
 
-    // @Then("the user should see an error message")
-    // public void the_user_should_see_an_error_message() {
-    //     String msg = loginPage.FailedMessage();
-    //     System.out.println("Captured error message: " + msg);
-    //     assertTrue(msg.contains("Your username is invalid"), 
-    //         "Expected error message to contain 'Your username is invalid', but got: " + msg);
-    // }
+    @Then("the user should see an error message")
+    public void the_user_should_see_an_error_message() {
+        String msg = loginPage.FailedMessage();
+        System.out.println("Captured error message: " + msg);
+        assertTrue(msg.contains("Your username is invalid"), 
+            "Expected error message to contain 'Your username is invalid', but got: " + msg);
+    }
 
     @Given("the user is on the login page")
     public void userIsOnLoginPage(){

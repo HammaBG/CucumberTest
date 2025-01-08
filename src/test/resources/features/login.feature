@@ -9,3 +9,15 @@ And clicks on the login button
 Examples:
 |email|password|
 |mohamed@gmail.com|12345678|
+
+@InvalidCredentials
+Scenario Outline: Failed login
+Given the user is on the login page
+When the user enters a email as "<email>"
+And the user enters a password as "<password>"
+And clicks on the login button
+
+Examples:
+|email|password|
+|invaliduser|wrongpass|
+|anas@gmail.com|12345678|

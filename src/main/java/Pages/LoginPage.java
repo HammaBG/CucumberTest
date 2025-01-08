@@ -40,7 +40,7 @@ public class LoginPage {
     }
     public String FailedMessage() {
         WebElement flash = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("flash")));
-        return flash.getText().trim(); // Trim to avoid unexpected whitespace
+        return flash.getText().trim();
     }
    
 }
