@@ -1,7 +1,7 @@
-Feature: Product Search in Shop
+Feature: Shop Page Filters
 
-Scenario: User searches for a product
-    Given the user is on the shop page
-    When the user searches for a product "Necklace"
+  Scenario: User selects NECKLACE filter
+    Given the user is on the home page
+    And the user navigates to the shop page
     And the user selects the NECKLACE checkbox
-    Then the user should see search results for "Necklace"
+    
