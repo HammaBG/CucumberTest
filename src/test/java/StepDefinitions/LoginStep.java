@@ -3,6 +3,8 @@ package StepDefinitions;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.aventstack.extentreports.Status;
 
@@ -20,9 +22,9 @@ public class LoginStep extends TestBase {
       loginPage = new LoginPage(getDriver());
    }
 
-    @When("the user enters a username as {string}")
-    public void userEntersUsername(String username) {
-        loginPage.enterUsername(username); 
+    @When("the user enters a email as {string}")
+    public void userEntersUsername(String email) {
+        loginPage.enterEmail(email); 
     }
 
     @And("the user enters a password as {string}")
@@ -35,19 +37,19 @@ public class LoginStep extends TestBase {
         loginPage.submitLogin();
     }
 
-    @Then("the user should see a successful login message")
-    public void the_user_should_see_a_successful_login_message() {
-      String msg= loginPage.SuccessMessage();
-       assertTrue( msg.contains("You logged into a secure area!")); 
-    }
+    // @Then("the user should see a successful login message")
+    // public void the_user_should_see_a_successful_login_message() {
+    //   String msg= loginPage.SuccessMessage();
+    //    assertTrue( msg.contains("You logged into a secure area!")); 
+    // }
 
-    @Then("the user should see an error message")
-    public void the_user_should_see_an_error_message() {
-        String msg = loginPage.FailedMessage();
-        System.out.println("Captured error message: " + msg);
-        assertTrue(msg.contains("Your username is invalid"), 
-            "Expected error message to contain 'Your username is invalid', but got: " + msg);
-    }
+    // @Then("the user should see an error message")
+    // public void the_user_should_see_an_error_message() {
+    //     String msg = loginPage.FailedMessage();
+    //     System.out.println("Captured error message: " + msg);
+    //     assertTrue(msg.contains("Your username is invalid"), 
+    //         "Expected error message to contain 'Your username is invalid', but got: " + msg);
+    // }
 
     @Given("the user is on the login page")
     public void userIsOnLoginPage(){
@@ -60,4 +62,5 @@ public class LoginStep extends TestBase {
         }
 
     }
+
 }

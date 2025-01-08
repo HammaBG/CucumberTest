@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPage {
-    WebDriver driver; 
+      WebDriver driver; 
       private WebDriverWait wait ;
 
     public  LoginPage(WebDriver webdriver){
@@ -19,13 +19,12 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     public void openLoginPage(){
-        
-        driver.get("https://the-internet.herokuapp.com/login");
+        driver.get("http://localhost:5173/login");    
     }
-    public void enterUsername(String username){
+    public void enterEmail(String email){
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-       WebElement usernameField= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
-        usernameField.sendKeys(username);
+       WebElement emailField= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+        emailField.sendKeys(email);
     }
     public void Enterpassword(String password){
         WebElement passwordfield= wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
@@ -43,4 +42,5 @@ public class LoginPage {
         WebElement flash = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("flash")));
         return flash.getText().trim(); // Trim to avoid unexpected whitespace
     }
+   
 }
