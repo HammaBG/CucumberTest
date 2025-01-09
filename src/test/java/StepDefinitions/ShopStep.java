@@ -44,15 +44,9 @@ public class ShopStep extends TestBase {
     public void userNavigatesToShopPage() {
         try {
             homePage.navigateToShopPage();
-            Thread.sleep(1000);
             hooks._scenario.log(Status.PASS, "The user navigates to the shop page");
         }
-        catch (InterruptedException e) {
-            // Handle the InterruptedException if it's thrown during the sleep
-            hooks._scenario.log(Status.FAIL, "Thread was interrupted while waiting");
-            Thread.currentThread().interrupt(); // Restore the interrupted status
-            throw new RuntimeException(e); 
-        } catch (Exception e) {
+         catch (Exception e) {
             hooks._scenario.log(Status.FAIL, "Failed to navigate to shop page");
             throw e;
         }
@@ -62,16 +56,10 @@ public class ShopStep extends TestBase {
     public void userSelectsNecklaceCheckbox() {
         try {
             shopPage.selectNecklaceCheckbox();
-            Thread.sleep(1000);
 
             hooks._scenario.log(Status.PASS, "The user selects the NECKLACE checkbox");
         }
-        catch (InterruptedException e) {
-            // Handle the InterruptedException if it's thrown during the sleep
-            hooks._scenario.log(Status.FAIL, "Thread was interrupted while waiting");
-            Thread.currentThread().interrupt(); // Restore the interrupted status
-            throw new RuntimeException(e); 
-        } catch (Exception e) {
+         catch (Exception e) {
             hooks._scenario.log(Status.FAIL, "Failed to select NECKLACE checkbox");
             throw e;
         }
@@ -91,14 +79,8 @@ public class ShopStep extends TestBase {
         try {
             shopPage.openFavPage();
             hooks._scenario.log(Status.PASS, "The user is on the favorites page");
-            Thread.sleep(2000);
         }
-        catch (InterruptedException e) {
-            // Handle the InterruptedException if it's thrown during the sleep
-            hooks._scenario.log(Status.FAIL, "Thread was interrupted while waiting");
-            Thread.currentThread().interrupt(); // Restore the interrupted status
-            throw new RuntimeException(e); 
-        }catch (Exception e) {
+        catch (Exception e) {
             hooks._scenario.log(Status.FAIL, "Failed to navigate to the favorites page");
             throw e;
         }
@@ -106,10 +88,8 @@ public class ShopStep extends TestBase {
     @And("the user clicks on a favorite item")
     public void theUserClicksOnAFavoriteItem() {
         try {
-            // Locate the favorite item using its unique identifier (e.g., text or specific class)
             WebElement favoriteItem = getDriver().findElement(By.xpath("//div[contains(text(), 'Necklace for men')]"));
             
-            // Click on the favorite item
             favoriteItem.click();
             
             hooks._scenario.log(Status.PASS, "The user clicked on the favorite item: Necklace for men");
@@ -122,18 +102,11 @@ public class ShopStep extends TestBase {
     public void theUserIsNavigatedToTheItemsDetailsPage() {
     try {
         String currentUrl = getDriver().getCurrentUrl();
-        // Check if the URL matches the expected pattern for the item's details page
         assertTrue(currentUrl.matches("http://localhost:5173/product/\\w+"), 
             "User is not navigated to the item's details page. Current URL: " + currentUrl);
-            Thread.sleep(2000);
         hooks._scenario.log(Status.PASS, "The user is successfully navigated to the item's details page: " + currentUrl);
     }
-    catch (InterruptedException e) {
-        // Handle the InterruptedException if it's thrown during the sleep
-        hooks._scenario.log(Status.FAIL, "Thread was interrupted while waiting");
-        Thread.currentThread().interrupt(); // Restore the interrupted status
-        throw new RuntimeException(e); 
-    } catch (AssertionError | Exception e) {
+     catch (AssertionError | Exception e) {
         hooks._scenario.log(Status.FAIL, "Navigation to the item's details page failed");
         throw e;
     }
@@ -142,12 +115,10 @@ public class ShopStep extends TestBase {
     @Then("the user clicks the {string} button")
     public void theUserClicksTheButton(String buttonText) {
         try {
-            // Wait for the button to be clickable inside the btn-container
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             WebElement button = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='btn-container']//button[contains(text(), '" + buttonText + "')]")));
             
-            // Click the button
             button.click();
             
             hooks._scenario.log(Status.PASS, "The user clicked the \"" + buttonText + "\" button");
@@ -161,17 +132,12 @@ public class ShopStep extends TestBase {
     @When("the user is navigated to the cart page")
     public void theUserIsNavigatedToTheCartPage() {
         try {
-            Thread.sleep(1000);    
             String currentUrl = getDriver().getCurrentUrl();
             assertTrue(currentUrl.contains("/cart"), "The user was not navigated to the cart page!");
     
             hooks._scenario.log(Status.PASS, "The user is navigated to the cart page");
         }
-        catch (InterruptedException e) {
-            hooks._scenario.log(Status.FAIL, "Thread was interrupted while waiting");
-            Thread.currentThread().interrupt(); // Restore the interrupted status
-            throw new RuntimeException(e); 
-        } catch (Exception e) {
+       catch (Exception e) {
             hooks._scenario.log(Status.FAIL, "Failed to navigate to the cart page");
             throw e;
         }
