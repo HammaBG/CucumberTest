@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 public class ShopPage {
     WebDriver driver;
@@ -57,4 +58,13 @@ public class ShopPage {
     public void openFavPage() {
         driver.get("http://localhost:5173/favorite");  // Ensure this URL is correct
     }
+    public void clickOnFavoriteItem(String itemText) {
+        try {
+            WebElement favoriteItem = driver.findElement(By.xpath("//div[@class='text-lg' and text()='" + itemText + "']"));
+            favoriteItem.click();
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("Favorite item with text '" + itemText + "' not found", e);
+        }
+    }
+    
 }
